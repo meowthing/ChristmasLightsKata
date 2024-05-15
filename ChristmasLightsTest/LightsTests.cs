@@ -21,8 +21,8 @@ public class Tests
         int coordsEndX, int coordsEndY, int numOfActiveLights)
     {
         Assert.That(_lightsController.TurnOnSet(
-                new LightCoordinates(coordsStartX, coordsStartY),
-                new LightCoordinates(coordsEndX, coordsEndY))
+                (coordsStartX, coordsStartY),
+                (coordsEndX, coordsEndY))
             , Is.EqualTo(numOfActiveLights));
     }
 
@@ -32,8 +32,8 @@ public class Tests
         int coordsEndX, int coordsEndY, int numOfinactiveLights)
     {
         Assert.That(_lightsController.TurnOffSet(
-                new LightCoordinates(coordsStartX, coordsStartY),
-                new LightCoordinates(coordsEndX, coordsEndY))
+                (coordsStartX, coordsStartY),
+                (coordsEndX, coordsEndY))
             , Is.EqualTo(numOfinactiveLights));
     }
 
@@ -43,35 +43,35 @@ public class Tests
         int coordsEndX, int coordsEndY, int numOfActiveLights)
     {
         Assert.That(_lightsController.ToggleSet(
-                new LightCoordinates(coordsStartX, coordsStartY),
-                new LightCoordinates(coordsEndX, coordsEndY))
+                (coordsStartX, coordsStartY),
+                (coordsEndX, coordsEndY))
             , Is.EqualTo(numOfActiveLights));
     }
 
     [Test]
     public void TestMultipleActions()
     {
-        _lightsController.TurnOnSet(new LightCoordinates(887, 9),
-            new LightCoordinates(959, 629));
-        _lightsController.TurnOnSet(new LightCoordinates(454, 398),
-            new LightCoordinates(844, 448));
+        _lightsController.TurnOnSet((887, 9),
+            (959, 629));
+        _lightsController.TurnOnSet((454, 398),
+            (844, 448));
 
-        _lightsController.TurnOffSet(new LightCoordinates(539, 243),
-            new LightCoordinates(559, 965));
-        _lightsController.TurnOffSet(new LightCoordinates(370, 819),
-            new LightCoordinates(676, 868));
-        _lightsController.TurnOffSet(new LightCoordinates(145, 40),
-            new LightCoordinates(370, 997));
-        _lightsController.TurnOffSet(new LightCoordinates(301, 3),
-            new LightCoordinates(808, 453));
+        _lightsController.TurnOffSet((539, 243),
+            (559, 965));
+        _lightsController.TurnOffSet((370, 819),
+            (676, 868));
+        _lightsController.TurnOffSet((145, 40),
+            (370, 997));
+        _lightsController.TurnOffSet((301, 3),
+            (808, 453));
 
-        _lightsController.TurnOnSet(new LightCoordinates(351, 678),
-            new LightCoordinates(951, 908));
+        _lightsController.TurnOnSet((351, 678),
+            (951, 908));
 
-        _lightsController.ToggleSet(new LightCoordinates(720, 196),
-            new LightCoordinates(897, 994));
-        _lightsController.ToggleSet(new LightCoordinates(831, 394),
-            new LightCoordinates(904, 860));
+        _lightsController.ToggleSet((720, 196),
+            (897, 994));
+        _lightsController.ToggleSet((831, 394),
+            (904, 860));
 
         Assert.That(_lightsController.GetActiveLightsCount(), Is.EqualTo(230022));
     }
@@ -80,29 +80,43 @@ public class Tests
     public void TestValidInputs()
     {
         Assert.That(() => _lightsController.TurnOnSet(
-                new LightCoordinates(10000, 10000),
-                new LightCoordinates(1093203, 209123)),
+                (10000, 10000),
+                (1093203, 209123)),
             Throws.ArgumentException);
 
         Assert.That(() => _lightsController.TurnOffSet(
-                new LightCoordinates(10000, 10000),
-                new LightCoordinates(1093203, 209123)),
+                (10000, 10000),
+                (1093203, 209123)),
             Throws.ArgumentException);
 
         Assert.That(() => _lightsController.ToggleSet(
-                new LightCoordinates(10000, 10000),
-                new LightCoordinates(1093203, 209123)),
+                (10000, 10000),
+                (1093203, 209123)),
             Throws.ArgumentException);
-        
+
         Assert.That(() => _lightsController.ToggleSet(
-                new LightCoordinates(999, 1000),
-                new LightCoordinates(1000, 999)),
+                (999, 1000),
+                (1000, 999)),
             Throws.ArgumentException);
 
         // Sanity check for my bounds logic
         Assert.That(() => _lightsController.ToggleSet(
-                new LightCoordinates(999, 999),
-                new LightCoordinates(999, 999)),
+                (999, 999),
+                (999, 999)),
             Is.EqualTo(1));
+    }
+
+    [Test]
+    public void TotalBrightnessAfterTurnOn()
+    {
+        _lightsController.TurnOnSet((0, 0), (0, 0));
+        Assert.That(_lightsController.GetTotalBrightness(), Is.EqualTo(1));
+    }
+
+    [Test]
+    public void TotalBrightnessAfterToggle()
+    {
+        _lightsController.ToggleSet((0, 0), (999, 999));
+        Assert.That(_lightsController.GetTotalBrightness(), Is.EqualTo(2000000));
     }
 }
