@@ -2,27 +2,27 @@ namespace ChristmasLights;
 
 public class LightsController
 {
-    public Light[,] LightArray;
+    private readonly Light[,] _lightArray;
 
     public LightsController(int sizeX, int sizeY)
     {
-        LightArray = new Light[sizeX, sizeY];
+        _lightArray = new Light[sizeX, sizeY];
 
-        for (int i = 0; i < LightArray.GetLength(0); i++)
+        for (int i = 0; i < _lightArray.GetLength(0); i++)
         {
-            for (int j = 0; j < LightArray.GetLength(1); j++)
+            for (int j = 0; j < _lightArray.GetLength(1); j++)
             {
-                LightArray[i, j] = new Light();
+                _lightArray[i, j] = new Light();
             }
         }
     }
 
     private bool IsValidInput((int X, int Y) coordsStart, (int X, int Y) coordsEnd)
     {
-        if (coordsStart.X >= LightArray.GetLength(0) ||
-            coordsEnd.X >= LightArray.GetLength(0) ||
-            coordsStart.Y >= LightArray.GetLength(1) ||
-            coordsEnd.Y >= LightArray.GetLength(1))
+        if (coordsStart.X >= _lightArray.GetLength(0) ||
+            coordsEnd.X >= _lightArray.GetLength(0) ||
+            coordsStart.Y >= _lightArray.GetLength(1) ||
+            coordsEnd.Y >= _lightArray.GetLength(1))
         {
             throw new ArgumentException("Specified coordinates are out of array bounds.");
         }
@@ -42,28 +42,26 @@ public class LightsController
                 switch (action)
                 {
                     case (LightAction.ON):
-                        LightArray[i, j].Active = true;
-                        LightArray[i, j].Brightness += 1;
+                        _lightArray[i, j].Active = true;
+                        _lightArray[i, j].Brightness += 1;
                         break;
                     case (LightAction.OFF):
-                        LightArray[i, j].Active = false;
-                        LightArray[i, j].Brightness -= 1;
+                        _lightArray[i, j].Active = false;
+                        _lightArray[i, j].Brightness -= 1;
                         break;
                     case (LightAction.TOGGLE):
-                        LightArray[i, j].Active = !LightArray[i, j].Active;
-                        LightArray[i, j].Brightness += 2;
+                        _lightArray[i, j].Active = !_lightArray[i, j].Active;
+                        _lightArray[i, j].Brightness += 2;
                         break;
                 }
             }
         }
-
-        return;
     }
 
     public int GetActiveLightsCount()
     {
         int activeLights = 0;
-        foreach (var light in LightArray)
+        foreach (var light in _lightArray)
         {
             if (light.Active)
                 activeLights++;
@@ -75,7 +73,7 @@ public class LightsController
     public int GetTotalBrightness()
     {
         int totalBrightness = 0;
-        foreach (var light in LightArray)
+        foreach (var light in _lightArray)
         {
             totalBrightness += light.Brightness;
         }
