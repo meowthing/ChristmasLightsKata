@@ -1,0 +1,15 @@
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/bin/Debug/net7.0/ChristmasLights
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/bin/Debug/net7.0/ChristmasLights.deps.json
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/bin/Debug/net7.0/ChristmasLights.runtimeconfig.json
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/bin/Debug/net7.0/ChristmasLights.dll
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/bin/Debug/net7.0/ChristmasLights.pdb
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ChristmasLights.csproj.AssemblyReference.cache
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ChristmasLights.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ChristmasLights.AssemblyInfoInputs.cache
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ChristmasLights.AssemblyInfo.cs
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ChristmasLights.csproj.CoreCompileInputs.cache
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ChristmasLights.dll
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/refint/ChristmasLights.dll
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ChristmasLights.pdb
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ChristmasLights.genruntimeconfig.cache
+/Users/vincentleung/RiderProjects/ChristmasLightsKata/ChristmasLights/obj/Debug/net7.0/ref/ChristmasLights.dll
