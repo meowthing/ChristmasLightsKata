@@ -119,4 +119,13 @@ public class Tests
         _lightsController.ToggleSet((0, 0), (999, 999));
         Assert.That(_lightsController.GetTotalBrightness(), Is.EqualTo(2000000));
     }
+    
+    [Test]
+    public void BrightnessShouldBeNoLessThanZero()
+    {
+        _lightsController.TurnOnSet((0, 0), (0, 0));
+        _lightsController.TurnOffSet((0, 0), (0, 0));
+        _lightsController.TurnOffSet((0, 0), (0, 0));
+        Assert.That(_lightsController.GetTotalBrightness(), Is.EqualTo(0));
+    }
 }
